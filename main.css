@@ -1,0 +1,29 @@
+html {
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.start-map {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  justify-items: center;
+}
+
+.end-map {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  justify-items: center;
+}
+
+.test {
+  margin-bottom: 3vh;
+  width: 6vh;
+  height: 6vh;
+  background-color: rgb(0, 0, 255);
+}
