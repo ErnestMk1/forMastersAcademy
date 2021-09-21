@@ -9,13 +9,13 @@ body {
   padding: 0;
 }
 
-.start-map {
+.start {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   justify-items: center;
 }
 
-.end-map {
+.end {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   justify-items: center;

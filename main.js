@@ -6,43 +6,41 @@ const end = people.map(a => {
   }
   return a;
 });
+
 let counter = 0;
+
 for (let i = 0; i < pandemicStartMap.length; i++) {
   if (pandemicStartMap[i] === 'X') {
+    end.unshift('X');
     counter++;
   } else {
     break;
   }
 }
 
-const result = end.join('X');
+const pandemicEndMap = end.join('X').slice(counter);
 
-for (let i = 0; i < pandemicStartMap.length; i++) {
-  const block = document.createElement('div');
-  block.classList.add(`test`, `start-${i}`);
-  const startMap = document.querySelector('.start-map');
-  startMap.appendChild(block);
 
-  if (pandemicStartMap[i] === '1') {
-    document.querySelector(`.start-${i}`).setAttribute('style', 'background-color:red');
-  } else if (pandemicStartMap[i] === '0') {
-    document.querySelector(`.start-${i}`).setAttribute('style', 'background-color:green')
+function drawing(string, location) {
+  for (let i = 0; i < string.length; i++) {
+    const block = document.createElement('div');
+    block.classList.add(`test`, `${location}-${i}`);
+
+    const drawMap = document.querySelector(`.${location}`);
+
+    drawMap.appendChild(block);
+
+    if (string[i] === '1') {
+      document.querySelector(`.${location}-${i}`).setAttribute('style', 'background-color:red');
+    } else if (string[i] === '0') {
+      document.querySelector(`.${location}-${i}`).setAttribute('style', 'background-color:green')
+    }
   }
 }
 
 
-for (let j = -counter; j < pandemicStartMap.length - counter; j++) {
-  const block = document.createElement('div');
-  block.classList.add(`test`, `end-${j}`);
-  const startMap = document.querySelector('.end-map');
-  startMap.appendChild(block);
-
-  if (result[j] === '1') {
-    document.querySelector(`.end-${j}`).setAttribute('style', 'background-color:red');
-  } else if (result[j] === '0') {
-    document.querySelector(`.end-${j}`).setAttribute('style', 'background-color:green')
-  }
-}
+drawing(pandemicStartMap, 'start');
+drawing(pandemicEndMap, 'end');
 
 const totalPeople = people.reduce((acc, el) => {
   return acc + el.length;
